@@ -1,0 +1,6 @@
+[submodule "timescaledb"]
+	path = timescaledb
+	url = https://github.com/timescale/timescaledb.git
+[submodule "pipelinedb"]
+	path = pipelinedb
+	url = https://github.com/pipelinedb/pipelinedb.git
