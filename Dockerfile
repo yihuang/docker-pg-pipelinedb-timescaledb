@@ -38,3 +38,5 @@ COPY --from=builder /pipelinedb/pipelinedb.control /pipelinedb/pipelinedb--1.0.0
 
 COPY --from=builder /timescaledb/build/src/timescaledb-1.3.2.so /timescaledb/build/tsl/src/timescaledb-tsl-1.3.2.so /timescaledb/build/src/loader/timescaledb.so /usr/lib/postgresql/11/lib/
 COPY --from=builder /timescaledb/build/timescaledb.control /timescaledb/build/sql/timescaledb--1.3.2.sql /usr/share/postgresql/11/extension/
+
+RUN sed -i -e"s/^#shared_preload_libraries = ''.*$/shared_preload_libraries = 'timescaledb, pipelinedb, pg_stat_statements'/" /usr/share/postgresql/$PG_MAJOR/postgresql.conf.sample
